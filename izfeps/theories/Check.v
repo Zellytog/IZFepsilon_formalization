@@ -1,0 +1,62 @@
+(** Check: none of the main results depends on an axiom. *)
+From IZFe Require Import Syntax Deriv ISyntax Theories Basic Extension Thm12 Arith Pairs
+  Frame VE Model Realize Set_eps Cartesian Tripos Nabla Conserv
+  Graph GSubst ED Repl Ax17 Thm17 Topos Asm Recursion PCA NatModel
+  CompSys MemSys MemChoice
+  MCAFrame MCAModel NdMCA.
+
+Print Assumptions IZFm_closed.
+Print Assumptions IZFe_closed.
+Print Assumptions thm7.
+Print Assumptions lemma11.
+Print Assumptions thm12.
+Print Assumptions lemma16.
+Print Assumptions soundness.
+Print Assumptions thm26.
+Print Assumptions IZFe_realized.
+Print Assumptions Seps.
+Print Assumptions Seps_cart.
+Print Assumptions Seps_tripos.
+Print Assumptions nab_comp.
+Print Assumptions from_to.
+Print Assumptions GT_subst.
+Print Assumptions HED.
+Print Assumptions HAX.
+Print Assumptions sound17.
+Print Assumptions thm17.
+Print Assumptions IZFe_iff.
+Print Assumptions IZFp_iff.
+Print Assumptions SepsT.
+Print Assumptions SetE.
+Print Assumptions embed_full.
+Print Assumptions embed_faithful.
+Print Assumptions preAsm_tripos.
+Print Assumptions Asm.
+Print Assumptions epasm_full.
+Print Assumptions epasm_faithful.
+Print Assumptions epasm_pasm_realized.
+Print Assumptions thm8.
+Print Assumptions thm8_closed.
+Print Assumptions pca_frame.
+Print Assumptions pca_fixpoint.
+Print Assumptions pca_consistent.
+Print Assumptions natPCA.
+Print Assumptions nat_fixpoint.
+Print Assumptions nat_consistent.
+Print Assumptions nat_IZFe_realized.
+Print Assumptions cs_frame.
+Print Assumptions MemCS.
+Print Assumptions stream.
+Print Assumptions lookup_wpa.
+Print Assumptions cc_nat.
+Print Assumptions dc_nat.
+Print Assumptions cc_any.
+Print Assumptions dc_any.
+Print Assumptions mca_frame.
+Print Assumptions mca_fixpoint.
+Print Assumptions mca_consistent.
+Print Assumptions mca_IZFe_realized.
+Print Assumptions nd_mca.
+Print Assumptions nd_fixpoint.
+Print Assumptions nd_consistent.
+Print Assumptions nd_IZFe_realized.
