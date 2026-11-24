@@ -34,6 +34,10 @@ From IZFe Require Import Frame.
 Inductive xp (C : Type) : Type := xv (n : nat) | xc (c : C) | xa (f a : xp C).
 Arguments xv {C} n. Arguments xc {C} c. Arguments xa {C} f a.
 
+(** The scheme used by nested inductive types over expressions (codes
+    containing expressions, NdMCA.v). *)
+Scheme All for xp.
+
 (** e[c]: variable 0 receives c, the others are shifted down. *)
 Fixpoint xsub0 {C} (e : xp C) (c : C) : xp C :=
   match e with
@@ -78,10 +82,10 @@ Arguments mlam {_} _ _. Arguments dia {_ X} _ _.
 Section MCAFrame.
 
 Context (A : mca).
-Local Notation code := (mc A).
+Local Abbreviation code := (mc A).
 
 (** f·a ⊩ Q, through the modality. *)
-Local Notation W f a Q := (dia (app f a) Q).
+Local Abbreviation W f a Q := (dia (app f a) Q).
 
 (** ** Weakest precondition of an expression *)
 

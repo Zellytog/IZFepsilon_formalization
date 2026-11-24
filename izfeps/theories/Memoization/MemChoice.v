@@ -17,9 +17,9 @@ From Stdlib Require Import List Arith Lia.
 Import ListNotations.
 From IZFe Require Import Frame CompSys MemSys.
 
-Local Notation SPm := (SP MemCS).
-Local Notation F := (cs_frame MemCS).
-Local Notation W := (wpa MemCS).
+Local Abbreviation SPm := (SP MemCS).
+Local Abbreviation F := (cs_frame MemCS).
+Local Abbreviation W := (wpa MemCS).
 
 (** ** Rules for the primitives *)
 
@@ -110,9 +110,9 @@ Definition cTOTS : code := Lam 2 BT.
 
 Section Tot.
 Context (t y0 : code) (σ1 : log) (V1 : valid σ1) (Ht : TotN R σ1 t).
-Local Notation c0 := (pairv MemCS (Num 0) y0).
-Local Notation σA := (EAlloc (genC t) c0 :: σ1).
-Local Notation l := (length (tbls σ1)).
+Local Abbreviation c0 := (pairv MemCS (Num 0) y0).
+Local Abbreviation σA := (EAlloc (genC t) c0 :: σ1).
+Local Abbreviation l := (length (tbls σ1)).
 Context (P0 : PC 0 σA c0).
 
 Lemma HstepC σ c k : valid σ -> mfut σA σ -> PC k σ c -> W (genC t) c σ (fun σ' c' => PC (S k) σ' c' /\ True).
@@ -277,9 +277,9 @@ Definition cSTEPD : code :=
 
 Section TotD.
 Context (t : code) (i0 : nat) (σ1 : log) (V1 : valid σ1) (Ht : TotN R σ1 t).
-Local Notation c0 := (pairv MemCS (Num i0) D).
-Local Notation σA := (EAlloc (genD t) c0 :: σ1).
-Local Notation l := (length (tbls σ1)).
+Local Abbreviation c0 := (pairv MemCS (Num i0) D).
+Local Abbreviation σA := (EAlloc (genD t) c0 :: σ1).
+Local Abbreviation l := (length (tbls σ1)).
 
 Lemma P0D : PD i0 0 σA c0.
 Proof. reflexivity. Qed.
@@ -290,8 +290,8 @@ Proof.
   apply (@sp_stable MemCS _ σ1 σ t); [|exact Ht]. eapply mfut_trans; [|exact Fu]. exists [EAlloc (genD t) c0]. reflexivity.
 Qed.
 
-Local Notation STR := (stream (genD t) c0 σ1 (PD i0) LinkD P0D HstepD).
-Local Notation LK := (lookup_wpa (genD t) c0 σ1 (PD i0) LinkD P0D HstepD).
+Local Abbreviation STR := (stream (genD t) c0 σ1 (PD i0) LinkD P0D HstepD).
+Local Abbreviation LK := (lookup_wpa (genD t) c0 σ1 (PD i0) LinkD P0D HstepD).
 
 Lemma tots_okD σ : valid σ -> mfut σA σ -> TotN (SD l) σ (Lam 1 (subst0 BTD (Lookup l))).
 Proof.
@@ -499,9 +499,9 @@ Definition cTOTI : code := Lam 2 BTI.
 
 Section TotCI.
 Context (t y0 : code) (σ1 : log) (Ht : TotI R σ1 t).
-Local Notation c0 := (pairv MemCS (Num 0) y0).
-Local Notation σA := (EAlloc (genC t) c0 :: σ1).
-Local Notation l := (length (tbls σ1)).
+Local Abbreviation c0 := (pairv MemCS (Num 0) y0).
+Local Abbreviation σA := (EAlloc (genC t) c0 :: σ1).
+Local Abbreviation l := (length (tbls σ1)).
 Context (P0 : PCI 0 σA c0).
 
 Lemma HstepCI σ c k : valid σ -> mfut σA σ -> PCI k σ c -> W (genC t) c σ (fun σ' c' => PCI (S k) σ' c' /\ True).
@@ -510,8 +510,8 @@ Proof.
   apply (@sp_stable MemCS _ σ1 σ t); [|exact Ht]. eapply mfut_trans; [|exact Fu]. exists [EAlloc (genC t) c0]. reflexivity.
 Qed.
 
-Local Notation STR := (stream (genC t) c0 σ1 PCI (fun _ _ => True) P0 HstepCI).
-Local Notation LK := (lookup_wpa (genC t) c0 σ1 PCI (fun _ _ => True) P0 HstepCI).
+Local Abbreviation STR := (stream (genC t) c0 σ1 PCI (fun _ _ => True) P0 HstepCI).
+Local Abbreviation LK := (lookup_wpa (genC t) c0 σ1 PCI (fun _ _ => True) P0 HstepCI).
 
 Lemma pickI σ n y : valid σ -> mfut σA σ -> tentry σ l n = Some (pairv MemCS (Num n) y) ->
   sex MemCS (fun i => SCI l n i) σ y.
@@ -664,8 +664,8 @@ Definition cSTEPI : code :=
 
 Section TotDI.
 Context (t : code) (σ1 : log) (Ht : TotR R σ1 t).
-Local Notation σA := (EAlloc (genI t) D :: σ1).
-Local Notation l := (length (tbls σ1)).
+Local Abbreviation σA := (EAlloc (genI t) D :: σ1).
+Local Abbreviation l := (length (tbls σ1)).
 
 Lemma P0DI : PDI 0 σA D.
 Proof. exact Logic.I. Qed.
@@ -676,8 +676,8 @@ Proof.
   apply (@sp_stable MemCS _ σ1 σ t); [|exact Ht]. eapply mfut_trans; [|exact Fu]. exists [EAlloc (genI t) D]. reflexivity.
 Qed.
 
-Local Notation STR := (stream (genI t) D σ1 PDI (fun _ _ => True) P0DI HstepDI).
-Local Notation LK := (lookup_wpa (genI t) D σ1 PDI (fun _ _ => True) P0DI HstepDI).
+Local Abbreviation STR := (stream (genI t) D σ1 PDI (fun _ _ => True) P0DI HstepDI).
+Local Abbreviation LK := (lookup_wpa (genI t) D σ1 PDI (fun _ _ => True) P0DI HstepDI).
 
 Lemma tots_okDI σ : valid σ -> mfut σA σ -> TotI (SDI l) σ (Lam 1 (subst0 BTDI (Lookup l))).
 Proof.

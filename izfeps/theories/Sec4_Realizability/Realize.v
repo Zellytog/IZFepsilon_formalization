@@ -16,7 +16,7 @@ Context (F : frame).
 Context (Φ0 : Type) (enc : pcar F -> Φ0) (dec : Φ0 -> pcar F).
 Context (dec_enc : forall φ, dec (enc φ) ≡ φ).
 
-Local Notation V := (@V F).
+Local Abbreviation V := (@V F).
 
 Context (coll : forall T : Type, (T -> V) -> (V -> V -> pcar F) -> V).
 Context (coll_proper : forall T (xs xs' : T -> V) (ψ ψ' : V -> V -> pcar F),
@@ -29,19 +29,19 @@ Context (yfix : eexp -> fev F) (yfix_spec : fixpoint_comb F yfix).
 #[local] Instance teq_equiv' : Equivalence (@teq F).
 Proof. split; [intros x; apply teq_refl|intros x y; apply teq_sym|intros x y z; apply teq_trans]. Qed.
 
-Local Notation vempty := (vempty F).
-Local Notation vpair := (vpair F).
-Local Notation vunion := (vunion F).
-Local Notation vsep := (vsep F).
-Local Notation vpower := (vpower F Φ0 dec).
-Local Notation bsub := (bsub F Φ0 dec).
-Local Notation vsuc := (vsuc F).
-Local Notation snat := (snat F).
-Local Notation pnat := (pnat F).
-Local Notation vomega := (vomega F).
-Local Notation vrepl := (vrepl F coll).
-Local Notation tagT := (tagT F).
-Local Notation tagF := (tagF F).
+Local Abbreviation vempty := (vempty F).
+Local Abbreviation vpair := (vpair F).
+Local Abbreviation vunion := (vunion F).
+Local Abbreviation vsep := (vsep F).
+Local Abbreviation vpower := (vpower F Φ0 dec).
+Local Abbreviation bsub := (bsub F Φ0 dec).
+Local Abbreviation vsuc := (vsuc F).
+Local Abbreviation snat := (snat F).
+Local Abbreviation pnat := (pnat F).
+Local Abbreviation vomega := (vomega F).
+Local Abbreviation vrepl := (vrepl F coll).
+Local Abbreviation tagT := (tagT F).
+Local Abbreviation tagF := (tagF F).
 
 Definition fiff (A B : pcar F) : pcar F := fand (fimp A B) (fimp B A).
 
@@ -383,8 +383,8 @@ Proof. intros f g H; apply fall_proper, H. Qed.
 #[local] Instance for_Proper : Proper (peq ==> peq ==> peq) (@for_ F).
 Proof. intros ? ? ? ? ? ?; apply for_proper; assumption. Qed.
 
-Local Notation evt := (evt F Φ0 dec coll).
-Local Notation evf := (evf F Φ0 dec coll).
+Local Abbreviation evt := (evt F Φ0 dec coll).
+Local Abbreviation evf := (evf F Φ0 dec coll).
 
 Lemma evt_sht' ρ z t : teq (evt (z .: ρ) (sht t)) (evt ρ t).
 Proof. apply evt_sht, coll_proper. Qed.

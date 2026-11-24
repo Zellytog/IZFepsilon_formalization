@@ -10,14 +10,14 @@ From Stdlib Require Import List Arith Lia.
 Import ListNotations.
 From IZFe Require Import Syntax Deriv.
 
-Notation x0 := (tvar 0).
-Notation x1 := (tvar 1).
-Notation x2 := (tvar 2).
-Notation x3 := (tvar 3).
-Notation x4 := (tvar 4).
-Notation x5 := (tvar 5).
-Notation x6 := (tvar 6).
-Notation x7 := (tvar 7).
+Abbreviation x0 := (tvar 0).
+Abbreviation x1 := (tvar 1).
+Abbreviation x2 := (tvar 2).
+Abbreviation x3 := (tvar 3).
+Abbreviation x4 := (tvar 4).
+Abbreviation x5 := (tvar 5).
+Abbreviation x6 := (tvar 6).
+Abbreviation x7 := (tvar 7).
 
 (** The successor S(x) ≜ ⋃{x, {x, x}}. *)
 Definition tsuc (a : term) : term := tunion (tpair a (tpair a a)).

@@ -18,8 +18,8 @@ Inductive iform : Type :=
 | iAll (φ : iform) | iEx (φ : iform)
 | iMem (x y : nat) | iSub (x y : nat) | iEq (x y : nat).
 
-Notation iIff φ ψ := (iAnd (iImp φ ψ) (iImp ψ φ)).
-Notation iNot φ := (iImp φ iBot).
+Abbreviation iIff φ ψ := (iAnd (iImp φ ψ) (iImp ψ φ)).
+Abbreviation iNot φ := (iImp φ iBot).
 
 Fixpoint iren (ξ : nat -> nat) (φ : iform) : iform :=
   match φ with
@@ -34,7 +34,7 @@ Fixpoint iren (ξ : nat -> nat) (φ : iform) : iform :=
   | iEq x y => iEq (ξ x) (ξ y)
   end.
 
-Notation ish := (iren S).
+Abbreviation ish := (iren S).
 
 Definition iinst (φ : iform) (n : nat) : iform := iren (n .: fun k => k) φ.
 

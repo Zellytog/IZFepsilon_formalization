@@ -41,10 +41,10 @@ Section TriposDef.
 Context (C : category) (K : cartesian C).
 
 Local Notation "g ∘ f" := (ccomp g f) (at level 40, left associativity).
-Local Notation pr1 := (pr1 C K).
-Local Notation pr2 := (pr2 C K).
-Local Notation pairing := (pairing C K _ _ _).
-Local Notation prod := (prod C K).
+Local Abbreviation pr1 := (pr1 C K).
+Local Abbreviation pr2 := (pr2 C K).
+Local Abbreviation pairing := (pairing C K _ _ _).
+Local Abbreviation prod := (prod C K).
 
 Definition diag (x : ob C) : hom C x (prod x x) := pairing (cid x) (cid x).
 Definition fxid {G' G X : ob C} (f : hom C G' G) : hom C (prod G' X) (prod G X) := pairing (f ∘ pr1 G' X) (pr2 G' X).
@@ -83,7 +83,7 @@ Section Fibres.
 
 Context (F : frame).
 
-Local Notation V := (@V F).
+Local Abbreviation V := (@V F).
 
 #[local] Instance teq_equiv3 : Equivalence (@teq F).
 Proof. split; [intros x; apply teq_refl|intros x y; apply teq_sym|intros x y z; apply teq_trans]. Qed.
@@ -143,9 +143,9 @@ Section Reidx.
 
 Context (F : frame).
 
-Local Notation V := (@V F).
-Local Notation tpred := (tpred F).
-Local Notation tle := (tle F).
+Local Abbreviation V := (@V F).
+Local Abbreviation tpred := (tpred F).
+Local Abbreviation tle := (tle F).
 
 #[local] Instance teq_equiv4 : Equivalence (@teq F).
 Proof. split; [intros x; apply teq_refl|intros x y; apply teq_sym|intros x y z; apply teq_trans]. Qed.
@@ -279,14 +279,14 @@ End Reidx.
 Section ProdTools.
 
 Context (F : frame).
-Local Notation V := (@V F).
-Local Notation tpred := (tpred F).
+Local Abbreviation V := (@V F).
+Local Abbreviation tpred := (tpred F).
 
 #[local] Instance teq_equiv5 : Equivalence (@teq F).
 Proof. split; [intros x; apply teq_refl|intros x y; apply teq_sym|intros x y z; apply teq_trans]. Qed.
 
-Local Notation P1 x y := (prj_rel F x y (fun α β => α)).
-Local Notation P2 x y := (prj_rel F x y (fun α β => β)).
+Local Abbreviation P1 x y := (prj_rel F x y (fun α β => α)).
+Local Abbreviation P2 x y := (prj_rel F x y (fun α β => β)).
 
 Lemma P1_intro x y : exists e, forall z a b, fand (eps z (vprod F x y)) (veq z (kp F a b)) —[e]→ P1 x y z a.
 Proof.
@@ -342,15 +342,15 @@ End ProdTools.
 Section Quant.
 
 Context (F : frame).
-Local Notation V := (@V F).
-Local Notation tpred := (tpred F).
-Local Notation tle := (tle F).
+Local Abbreviation V := (@V F).
+Local Abbreviation tpred := (tpred F).
+Local Abbreviation tle := (tle F).
 
 #[local] Instance teq_equiv6 : Equivalence (@teq F).
 Proof. split; [intros x; apply teq_refl|intros x y; apply teq_sym|intros x y z; apply teq_trans]. Qed.
 
-Local Notation P1 x y := (prj_rel F x y (fun α β => α)).
-Local Notation P2 x y := (prj_rel F x y (fun α β => β)).
+Local Abbreviation P1 x y := (prj_rel F x y (fun α β => α)).
+Local Abbreviation P2 x y := (prj_rel F x y (fun α β => β)).
 
 Lemma kpr_proper (r : tpred) γ : Pproper F (fun α => r (kp F γ α)).
 Proof. intros α α' E. apply tp_proper, kp_proper; [reflexivity|exact E]. Qed.
@@ -419,15 +419,15 @@ End Quant.
 Section EqBC.
 
 Context (F : frame).
-Local Notation V := (@V F).
-Local Notation tpred := (tpred F).
-Local Notation tle := (tle F).
+Local Abbreviation V := (@V F).
+Local Abbreviation tpred := (tpred F).
+Local Abbreviation tle := (tle F).
 
 #[local] Instance teq_equiv7 : Equivalence (@teq F).
 Proof. split; [intros x; apply teq_refl|intros x y; apply teq_sym|intros x y z; apply teq_trans]. Qed.
 
-Local Notation P1 x y := (prj_rel F x y (fun α β => α)).
-Local Notation P2 x y := (prj_rel F x y (fun α β => β)).
+Local Abbreviation P1 x y := (prj_rel F x y (fun α β => α)).
+Local Abbreviation P2 x y := (prj_rel F x y (fun α β => β)).
 
 (** ∃_Δ(p)(⟨α, α'⟩) ≜ ⟦α ε x⟧ ∧ ⟦α = α'⟧ ∧ p(α). *)
 Definition teqdS_f (x : V) (p : tpred) (z : V) (α α' : V) : pcar F :=
@@ -558,17 +558,17 @@ Context (F : frame).
 Context (Φ0 : Type) (enc : pcar F -> Φ0) (dec : Φ0 -> pcar F).
 Context (dec_enc : forall φ, dec (enc φ) ≡ φ).
 
-Local Notation V := (@V F).
-Local Notation tpred := (tpred F).
-Local Notation tle := (tle F).
-Local Notation vpower := (vpower F Φ0 dec).
-Local Notation bsub := (bsub F Φ0 dec).
+Local Abbreviation V := (@V F).
+Local Abbreviation tpred := (tpred F).
+Local Abbreviation tle := (tle F).
+Local Abbreviation vpower := (vpower F Φ0 dec).
+Local Abbreviation bsub := (bsub F Φ0 dec).
 
 #[local] Instance teq_equiv8 : Equivalence (@teq F).
 Proof. split; [intros x; apply teq_refl|intros x y; apply teq_sym|intros x y z; apply teq_trans]. Qed.
 
-Local Notation P1 x y := (prj_rel F x y (fun α β => α)).
-Local Notation P2 x y := (prj_rel F x y (fun α β => β)).
+Local Abbreviation P1 x y := (prj_rel F x y (fun α β => α)).
+Local Abbreviation P2 x y := (prj_rel F x y (fun α β => β)).
 
 Definition tmemf (z α A : V) : pcar F := fand (veq z (kp F α A)) (eps α A).
 

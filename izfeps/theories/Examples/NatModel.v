@@ -10,7 +10,7 @@ From IZFe Require Import Syntax Deriv Theories Frame VE Model Realize PCA.
 
 Section NatModel.
 
-Local Notation V := (@V nat_frame).
+Local Abbreviation V := (@V nat_frame).
 
 Context (coll : forall T : Type, (T -> V) -> (V -> V -> pcar nat_frame) -> V).
 Context (coll_proper : forall T (xs xs' : T -> V) (ψ ψ' : V -> V -> pcar nat_frame),

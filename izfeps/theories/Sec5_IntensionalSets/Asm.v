@@ -218,7 +218,7 @@ Section EpsAsm.
 Context (F : frame).
 Context (Φ0 : Type) (enc : pcar F -> Φ0) (dec : Φ0 -> pcar F).
 Context (dec_enc : forall φ, dec (enc φ) ≡ φ).
-Local Notation V := (@V F).
+Local Abbreviation V := (@V F).
 Context (coll : forall T : Type, (T -> V) -> (V -> V -> pcar F) -> V).
 Context (coll_proper : forall T (xs xs' : T -> V) (ψ ψ' : V -> V -> pcar F),
   Rproper F ψ -> (forall t, teq (xs t) (xs' t)) -> (forall x y, ψ x y ≡ ψ' x y) ->
@@ -230,16 +230,16 @@ Context (yfix : eexp -> fev F) (yfix_spec : fixpoint_comb F yfix).
 #[local] Instance teq_equiv7 : Equivalence (@teq F).
 Proof. split; [intros x; apply teq_refl|intros x y; apply teq_sym|intros x y z; apply teq_trans]. Qed.
 
-Local Notation eqvX := (eqvX F).
-Local Notation ehom := (ehom F).
-Local Notation SetE := (SetE F Φ0 enc dec dec_enc coll coll_proper coll_spec yfix yfix_spec).
+Local Abbreviation eqvX := (eqvX F).
+Local Abbreviation ehom := (ehom F).
+Local Abbreviation SetE := (SetE F Φ0 enc dec dec_enc coll coll_proper coll_spec yfix yfix_spec).
 
 (** X is an ε-pre-assembly if ⋂_{x, x'} ⟦x ε X⟧ ∧ ⟦x' ε X⟧ ∧ ⟦x ≃ x'⟧ ⊃ ⟦x = x'⟧ is realized. *)
 Definition epasm (X : V) : Prop := exists e, forall x x' : V, eqvX X x x' —[e]→ veq x x'.
 
 (** V(E)⁺: the labels are realized, hereditarily. *)
 Inductive vplus : V -> Prop :=
-  vplus_intro (x : V) : (forall t, (exists e, ftop —[e]→ lbl x t) /\ vplus (sub x t)) -> vplus x.
+  vplus_intro (x : V) : (forall t, exists e, ftop —[e]→ lbl x t) -> (forall t, vplus (sub x t)) -> vplus x.
 
 Definition easm (X : V) : Prop := epasm X /\ vplus X.
 
@@ -247,7 +247,7 @@ Definition easm (X : V) : Prop := epasm X /\ vplus X.
 Definition epasm_pasm (X : V) : pasm F := {| car := idx X; ex := fun t => eps (sub X t) X |}.
 
 Lemma epasm_pasm_realized X : vplus X -> realized_ex F (epasm_pasm X).
-Proof. intros [x H] t. destruct (H t) as [[e He] _]. exists (e_comp e e_exI). eapply f_comp; [exact He|apply eps_br]. Qed.
+Proof. intros [x H _] t. destruct (H t) as [e He]. exists (e_comp e e_exI). eapply f_comp; [exact He|apply eps_br]. Qed.
 
 (** ⟦x = y⟧ implies ⟦x ≃ y⟧. *)
 Lemma veq_veqv : exists e, forall x y : V, veq x y —[e]→ veqv x y.

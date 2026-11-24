@@ -48,7 +48,7 @@ Definition faithful {C D} (Fu : functor C D) : Prop :=
 Section Topos.
 
 Context (F : frame).
-Local Notation V := (@V F).
+Local Abbreviation V := (@V F).
 
 #[local] Instance teq_equiv5 : Equivalence (@teq F).
 Proof. split; [intros x; apply teq_refl|intros x y; apply teq_sym|intros x y z; apply teq_trans]. Qed.
@@ -266,7 +266,7 @@ Section SetE.
 Context (F : frame).
 Context (Φ0 : Type) (enc : pcar F -> Φ0) (dec : Φ0 -> pcar F).
 Context (dec_enc : forall φ, dec (enc φ) ≡ φ).
-Local Notation V := (@V F).
+Local Abbreviation V := (@V F).
 Context (coll : forall T : Type, (T -> V) -> (V -> V -> pcar F) -> V).
 Context (coll_proper : forall T (xs xs' : T -> V) (ψ ψ' : V -> V -> pcar F),
   Rproper F ψ -> (forall t, teq (xs t) (xs' t)) -> (forall x y, ψ x y ≡ ψ' x y) ->
