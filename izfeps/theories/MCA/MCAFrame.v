@@ -34,6 +34,10 @@ From IZFe Require Import Frame.
 Inductive xp (C : Type) : Type := xv (n : nat) | xc (c : C) | xa (f a : xp C).
 Arguments xv {C} n. Arguments xc {C} c. Arguments xa {C} f a.
 
+(** The scheme used by nested inductive types over expressions (codes
+    containing expressions, NdMCA.v). *)
+Scheme All for xp.
+
 (** e[c]: variable 0 receives c, the others are shifted down. *)
 Fixpoint xsub0 {C} (e : xp C) (c : C) : xp C :=
   match e with

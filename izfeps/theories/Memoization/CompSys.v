@@ -22,6 +22,10 @@ From IZFe Require Import Frame.
 Inductive gex (C : Type) : Type := gv (n : nat) | gc (c : C) | ga (f a : gex C).
 Arguments gv {C} n. Arguments gc {C} c. Arguments ga {C} f a.
 
+(** The scheme used by nested inductive types over expressions (codes
+    containing expressions, MemSys.v). *)
+Scheme All for gex.
+
 (** e[a]: variable 0 receives a, the others are shifted down. *)
 Fixpoint subst0 {C} (e : gex C) (a : C) : gex C :=
   match e with
