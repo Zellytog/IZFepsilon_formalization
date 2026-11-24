@@ -37,7 +37,7 @@ Section Seps.
 
 Context (F : frame).
 
-Local Notation V := (@V F).
+Local Abbreviation V := (@V F).
 
 #[local] Instance teq_equiv : Equivalence (@teq F).
 Proof. split; [intros x; apply teq_refl|intros x y; apply teq_sym|intros x y z; apply teq_trans]. Qed.

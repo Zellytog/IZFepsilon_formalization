@@ -218,7 +218,7 @@ Section EpsAsm.
 Context (F : frame).
 Context (Φ0 : Type) (enc : pcar F -> Φ0) (dec : Φ0 -> pcar F).
 Context (dec_enc : forall φ, dec (enc φ) ≡ φ).
-Local Notation V := (@V F).
+Local Abbreviation V := (@V F).
 Context (coll : forall T : Type, (T -> V) -> (V -> V -> pcar F) -> V).
 Context (coll_proper : forall T (xs xs' : T -> V) (ψ ψ' : V -> V -> pcar F),
   Rproper F ψ -> (forall t, teq (xs t) (xs' t)) -> (forall x y, ψ x y ≡ ψ' x y) ->
@@ -230,9 +230,9 @@ Context (yfix : eexp -> fev F) (yfix_spec : fixpoint_comb F yfix).
 #[local] Instance teq_equiv7 : Equivalence (@teq F).
 Proof. split; [intros x; apply teq_refl|intros x y; apply teq_sym|intros x y z; apply teq_trans]. Qed.
 
-Local Notation eqvX := (eqvX F).
-Local Notation ehom := (ehom F).
-Local Notation SetE := (SetE F Φ0 enc dec dec_enc coll coll_proper coll_spec yfix yfix_spec).
+Local Abbreviation eqvX := (eqvX F).
+Local Abbreviation ehom := (ehom F).
+Local Abbreviation SetE := (SetE F Φ0 enc dec dec_enc coll coll_proper coll_spec yfix yfix_spec).
 
 (** X is an ε-pre-assembly if ⋂_{x, x'} ⟦x ε X⟧ ∧ ⟦x' ε X⟧ ∧ ⟦x ≃ x'⟧ ⊃ ⟦x = x'⟧ is realized. *)
 Definition epasm (X : V) : Prop := exists e, forall x x' : V, eqvX X x x' —[e]→ veq x x'.

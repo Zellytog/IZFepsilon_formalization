@@ -20,7 +20,7 @@ Section Model.
 Context (F : frame).
 Context (Φ0 : Type) (enc : pcar F -> Φ0) (dec : Φ0 -> pcar F).
 Context (dec_enc : forall φ, dec (enc φ) ≡ φ).
-Local Notation V := (@V F).
+Local Abbreviation V := (@V F).
 
 Context (coll : forall T : Type, (T -> V) -> (V -> V -> pcar F) -> V).
 Context (coll_proper : forall T (xs xs' : T -> V) (ψ ψ' : V -> V -> pcar F),

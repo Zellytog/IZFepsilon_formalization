@@ -14,7 +14,7 @@ as announced in the paper. The same goes for choice in the meta-theory
 
 ## Building
 
-Tested with Rocq 9.1.1 and the Rocq Stdlib 9.1.0 (OCaml 4.14.2).
+Requires Rocq ≥ 9.2 (for the `Abbreviation` command) and the Rocq Stdlib.
 
 ```sh
 make
@@ -22,7 +22,7 @@ make
 
 ## Layout
 
-All files live under the logical prefix `IZFe` (`-Q theories IZFe`).
+All files live under the logical prefix `IZFe` (`-Q theories IZFe` in `_RocqProject`).
 
 | Folder | Contents |
 |---|---|

@@ -78,8 +78,8 @@ Arguments lam {c} _ _.
 Section CSFrame.
 
 Context (C : cs).
-Local Notation code := (cd C).
-Local Notation ex := (gex code).
+Local Abbreviation code := (cd C).
+Local Abbreviation ex := (gex code).
 
 (** ** Weakest precondition *)
 

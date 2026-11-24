@@ -337,8 +337,8 @@ Qed.
 Section Stream.
 
 Context (g c0 : code) (σ0 : log).
-Local Notation l := (length (tbls σ0)).
-Local Notation σA := (EAlloc g c0 :: σ0).
+Local Abbreviation l := (length (tbls σ0)).
+Local Abbreviation σA := (EAlloc g c0 :: σ0).
 Context (VA : valid σA).
 Context (P : nat -> sprop MemCS) (Link : code -> code -> Prop).
 Context (P0 : P 0 σA c0).

@@ -11,8 +11,8 @@ From IZFe Require Import Syntax Deriv Theories Frame VE Model Realize MCAFrame.
 Section MCAModel.
 
 Context (A : mca).
-Local Notation F := (mca_frame A).
-Local Notation V := (@V F).
+Local Abbreviation F := (mca_frame A).
+Local Abbreviation V := (@V F).
 
 Context (coll : forall T : Type, (T -> V) -> (V -> V -> pcar F) -> V).
 Context (coll_proper : forall T (xs xs' : T -> V) (ψ ψ' : V -> V -> pcar F),

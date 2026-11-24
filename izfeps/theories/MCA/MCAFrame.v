@@ -78,10 +78,10 @@ Arguments mlam {_} _ _. Arguments dia {_ X} _ _.
 Section MCAFrame.
 
 Context (A : mca).
-Local Notation code := (mc A).
+Local Abbreviation code := (mc A).
 
 (** f·a ⊩ Q, through the modality. *)
-Local Notation W f a Q := (dia (app f a) Q).
+Local Abbreviation W f a Q := (dia (app f a) Q).
 
 (** ** Weakest precondition of an expression *)
 

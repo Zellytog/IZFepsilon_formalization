@@ -46,8 +46,8 @@ with form_ind2 := Induction for form Sort Prop.
 Combined Scheme syn_ind from term_ind2, form_ind2.
 
 (** Derived connectives. *)
-Notation fIff φ ψ := (fAnd (fImp φ ψ) (fImp ψ φ)).
-Notation fNot φ := (fImp φ fBot).
+Abbreviation fIff φ ψ := (fAnd (fImp φ ψ) (fImp ψ φ)).
+Abbreviation fNot φ := (fImp φ fBot).
 
 (** ** The level of a term in the hierarchy Lₙ *)
 
@@ -98,8 +98,8 @@ with renf (ξ : nat -> nat) (φ : form) : form :=
   | fEq a b => fEq (rent ξ a) (rent ξ b)
   end.
 
-Notation sht := (rent S).
-Notation shf := (renf S).
+Abbreviation sht := (rent S).
+Abbreviation shf := (renf S).
 
 (** ** Simultaneous substitutions *)
 

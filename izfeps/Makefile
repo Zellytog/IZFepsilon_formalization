@@ -1,11 +1,11 @@
-all: CoqMakefile
-	$(MAKE) -f CoqMakefile
+all: RocqMakefile
+	$(MAKE) -f RocqMakefile
 
-CoqMakefile: _CoqProject
-	rocq makefile -f _CoqProject -o CoqMakefile
+RocqMakefile: _RocqProject
+	rocq makefile -f _RocqProject -o RocqMakefile
 
 clean:
-	if [ -f CoqMakefile ]; then $(MAKE) -f CoqMakefile clean; fi
-	rm -f CoqMakefile CoqMakefile.conf
+	if [ -f RocqMakefile ]; then $(MAKE) -f RocqMakefile clean; fi
+	rm -f RocqMakefile RocqMakefile.conf .RocqMakefile.d
 
 .PHONY: all clean

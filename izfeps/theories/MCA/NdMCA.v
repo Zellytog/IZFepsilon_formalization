@@ -73,7 +73,7 @@ Proof. apply mca_consistent. intros f a (r & _ & []). Qed.
 
 Section NdModel.
 
-Local Notation V := (@V nd_frame).
+Local Abbreviation V := (@V nd_frame).
 
 Context (coll : forall T : Type, (T -> V) -> (V -> V -> pcar nd_frame) -> V).
 Context (coll_proper : forall T (xs xs' : T -> V) (ψ ψ' : V -> V -> pcar nd_frame),
